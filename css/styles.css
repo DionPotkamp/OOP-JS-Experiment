@@ -1,0 +1,7 @@
+.img-fluid{
+    min-width: 50%;
+    max-width: 90%;
+}
+.card {
+    min-width: 33.33%;
+}

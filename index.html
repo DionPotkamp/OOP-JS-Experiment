@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Computer Depot</title>
+    <link rel="icon" href="media/sys/cd.png">
+
+    <!--    Bootstrap   -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!--    FontAwesome -->
+    <script src="https://kit.fontawesome.com/a638b22d1e.js"></script>
+
+    <script src="js/functions.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body class="bg-light">
+
+<!--    Welcome header  -->
+<div class="jumbotron jumbotron-fluid mb-0">
+    <div class="container">
+        <h1 class="display-4">Welkom!</h1>
+        <p class="lead">Grootste groothandel in computers en accessoires</p>
+        <p>Computer Depot</p>
+    </div>
+</div>
+
+<!--    Navigation bar  -->
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+    <a class="navbar-brand" href="#">
+        <img src="media/sys/cd.png" width="40" height="25">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <ul class="collapse navbar-collapse m-0 list-unstyled" id="nav">
+        <li class="nav-item ">
+            <a class="nav-link text-white" href="#">
+                <i class="fas fa-desktop" style="font-size: 1.5rem;"></i>
+                Home
+            </a>
+        </li>
+        <li class="nav-item my-3">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary nav-link text-white" data-toggle="modal" data-target="#basket" onclick="basket.viewBasket();">
+                <i class="fas fa-cart-plus" style="font-size: 1.3rem;"></i>
+                Card
+            </button>
+        </li>
+        <form class="form-inline m-0 ml-auto">
+            <div class="input-group">
+                <input class="form-control input-group-text" type="text" placeholder="Search" name="search" disabled>
+                <div class="input-group-append">
+                    <button class="btn btn-info " type="submit" disabled>Search</button>
+                </div>
+            </div>
+        </form>
+    </ul>
+</nav>
+
+<!-- Shopping basket -->
+<div class="modal fade" id="basket" tabindex="-1" role="dialog" aria-labelledby="basketModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="basketModal">Shopping basket</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="basketTable">
+                <!-- basket table -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" onclick="basket.emptyBasket()">Leegmaken</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal">Afrekenen</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Producten-->
+<div class="bg-white p-5 m-0">
+    <div class="d-md-flex flex-md-row">
+<!--    card 1-->
+        <div class="card m-1 shadow">
+            <img class="card-img-top img-fluid" src="media/images/muis1.jpg">
+            <div class="card-body d-flex flex-column">
+                <h3 class="card-title mt-auto">Muis 1</h3>
+                <p class="card-text mt-auto">De nieuwste en de snelste in zijn prijs categorie. Beter kan het niet!</p>
+                <table class="table mt-auto">
+                    <tr>
+                        <td><i class="fas fa-at"></i></td>
+                        <td>Wolf</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fab fa-usb"></i></td>
+                        <td>Draadloos</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-coins"></i></td>
+                        <td>€33</td>
+                    </tr>
+                </table>
+            </div>
+            <form name="orderform" action="index.html" method="get" onsubmit="basket.addItem(this); basket.viewBasket(); return false;" class="form-inline card-footer bg-info text-center">
+                <input type="hidden" name="id" value="1">
+                <input type="hidden" name="product" value="Muis 1">
+                <input type="hidden" name="model" value="Wolf">
+                <input type="hidden" name="prijs" value="33">
+                <div class="card-link text-white">
+                    <input type="image" src="media/sys/basket.svg" style="width: 15%;" alt="Basket icon" data-toggle="modal" data-target="#basket">
+                    <input type="number" name="aantal" value="1" style="width: 10%;" class="form-control">
+                </div>
+            </form>
+        </div>
+<!--    card 2-->
+        <div class="card m-1 shadow">
+            <img class="card-img-top img-fluid" src="media/images/muis2.jpg">
+            <div class="card-body d-flex flex-column">
+                <h3 class="card-title mt-auto">Muis 2</h3>
+                <p class="card-text mt-auto">De nieuwste Robotic muis. Watch your back, straks neemt i je pc over!</p>
+
+                <table class="table mt-auto">
+                    <tr>
+                        <td><i class="fas fa-at"></i></td>
+                        <td>Robo</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fab fa-usb"></i></td>
+                        <td>USB</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-coins"></i></td>
+                        <td>€66</td>
+                    </tr>
+                </table>
+            </div>
+            <form name="orderform" action="index.html" method="get" onsubmit="basket.addItem(this); basket.viewBasket(); return false;" class="form-inline card-footer bg-info text-center">
+                <input type="hidden" name="id" value="2">
+                <input type="hidden" name="product" value="Muis 2">
+                <input type="hidden" name="model" value="robo">
+                <input type="hidden" name="prijs" value="66">
+                <div class="card-link text-white">
+                    <input type="image" src="media/sys/basket.svg" style="width: 15%;" data-toggle="modal" data-target="#basket">
+                    <input type="number" name="aantal" value="1" style="width: 10%;" class="form-control">
+                </div>
+            </form>
+        </div>
+<!--    card 3-->
+        <div class="card m-1 shadow ">
+            <img class="card-img-top img-fluid" src="media/images/keyenmuis.jpg">
+            <div class="card-body d-flex flex-column">
+                <h3 class="card-title mt-auto">Muis 3</h3>
+                <p class="card-text mt-auto">Een muis en een keyboard</p>
+                <table class="table mt-auto">
+                    <tr>
+                        <td><i class="fas fa-at"></i></td>
+                        <td>GemBird</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fab fa-usb"></i></td>
+                        <td>USB</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-coins"></i></td>
+                        <td>€99</td>
+                    </tr>
+                </table>
+            </div>
+            <form name="orderform" action="index.html" method="get" onsubmit="basket.addItem(this); basket.viewBasket(); return false;" class="form-inline card-footer bg-info text-center">
+                <input type="hidden" name="id" value="3">
+                <input type="hidden" name="product" value="Muis 3">
+                <input type="hidden" name="model" value="GemBird">
+                <input type="hidden" name="prijs" value="99">
+                <div class="card-link text-white">
+                    <input type="image" src="media/sys/basket.svg" style="width: 15%;" data-toggle="modal" data-target="#basket">
+                    <input type="number" name="aantal" value="1" style="width: 10%;" class="form-control">
+                </div>
+            </form>
+        </div>
+<!--    End cards-->
+    </div>
+</div>
+</body>
+</html>
